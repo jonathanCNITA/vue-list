@@ -12,7 +12,7 @@ Vue.component('app-project', Project)
 export default new Router({
   routes: [
     { path: '/', name: 'ProjectList', component: ProjectList },
-    { path: '/detail/:id', name: 'Detail', component: Detail },
+    { path: '/detail/:id', name: 'Detail', component: Detail, props: true },
     { path: '/table', name: 'ProjectTable', component: ProjectTable }
   ]
 })

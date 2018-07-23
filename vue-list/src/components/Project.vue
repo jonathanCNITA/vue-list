@@ -5,7 +5,7 @@
             <h2>NAME: {{ name }}</h2>
             <p>machine status: {{ status ? 'OK': 'KO' }}</p>
             <input type="checkbox" v-model="status">
-            <router-link :to="{name:'detail/',params: {id, project: project}}"><button class="btn btn-primary">Details</button></router-link>
+            <router-link :to="{name: 'Detail', params: { id, project } }"><button class="btn btn-primary">Details</button></router-link>
         </div>
     </div>
 </template>

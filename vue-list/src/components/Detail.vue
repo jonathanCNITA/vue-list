@@ -11,16 +11,16 @@
 <script>
     export default {
         name: 'Detail',
-        props: ['project'],
+        props: ['id','project'],
         data() {
             return {
                 selectedProject: {}
             }
         },
         beforeMount() {
-            let searchProject = this.$route.params.id;
-            let found = this.projects.find(project => project._id === searchProject);
-            this.selectedProject = found;
+            // let searchProject = this.$route.params.id;
+            // let found = this.projects.find(project => project._id === searchProject);
+            // this.selectedProject = found;
         }
     }
 </script>
