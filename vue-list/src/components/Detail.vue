@@ -2,27 +2,25 @@
     <div>
         <router-link :to="'/'"><button class="btn btn-primary">home</button></router-link>
         <h1>DETAIL COMPONENT</h1>
-        <p>name: {{ selectedProject.name }}</p>
+        <p>name: {{ project.name }}</p>
+        <p>Status: {{ project.isActive }}</p>
+        <p>Id: {{ project._id }}</p>
     </div>
 </template>
 
 <script>
     export default {
         name: 'Detail',
-        props: ['projects'],
+        props: ['project'],
         data() {
             return {
-                selectedProject: {},
-                num: 5
+                selectedProject: {}
             }
         },
         beforeMount() {
             let searchProject = this.$route.params.id;
-            console.log(searchProject);
-            console.log(this.projects);
             let found = this.projects.find(project => project._id === searchProject);
-            console.log(found);
-			this.selectedProject = found;
-		}
+            this.selectedProject = found;
+        }
     }
 </script>
