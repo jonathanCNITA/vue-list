@@ -2,9 +2,10 @@
     <div>
         <router-link :to="'/'"><button class="btn btn-primary">home</button></router-link>
         <h1>DETAIL COMPONENT</h1>
-        <p>name: {{ project.name }}</p>
-        <p>Status: {{ project.isActive }}</p>
-        <p>Id: {{ project._id }}</p>
+        <p><strong>Name:</strong> {{ project.creator.name }}</p>
+        <p><strong>Status:</strong> {{ project.description }}</p>
+        <p><strong>Id:</strong> {{ project.id }}</p>
+        <router-link :to="{name: 'Update', params: { project: selectedProject } }"><button class="btn btn-primary">Update</button></router-link>
     </div>
 </template>
 
@@ -14,7 +15,7 @@
         props: ['id','project'],
         data() {
             return {
-                selectedProject: {}
+                selectedProject: this.project
             }
         },
         beforeMount() {

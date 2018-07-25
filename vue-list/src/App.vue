@@ -1,30 +1,36 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <router-view class="container" :projects="datas"></router-view>
+    <app-navigation></app-navigation>
+    <h3 v-if="datas.length === 0">No data - loading</h3>
+    <div v-if="datas.length > 0">
+      <router-view class="container" :projects="datas"></router-view>
+    </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+import Navigation from '@/components/Navigation'
+
 export default {
   name: 'App',
+  components: {
+    'app-navigation': Navigation
+  },
   data() {
     return {
-      datas: [{
-                '_id': '5b3e3da860e7c6eeb88e3ceb',
-                'isActive': true,
-                'picture': 'http://placehold.it/32x32',
-                'name': 'ZENTURY',
-                'creation': 'Sat May 25 1974 16:52:45 GMT+0100 (Central European Standard Time)'
-              },
-              {
-                '_id': '5b3e3da860e7c6eeb88e3c23',
-                'isActive': false,
-                'picture': 'http://placehold.it/32x32',
-                'name': 'ARAK',
-                'creation': 'Sat May 25 1974 16:52:45 GMT+0100 (Central European Standard Time)'
-              }]
+      datas: [],
     }
+  },
+  created() {
+    const keyAuth = localStorage.getItem('UserTokenKey');
+    // axios.get('https://daily-standup-campus.herokuapp.com/api/projects?access_token=' + keyAuth)
+    axios.get('https://daily-standup-campus.herokuapp.com/api/projects?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViMjNmODIzYTM5YjlmMDAxNGViNGJlNiIsImlhdCI6MTUzMTE0Mjg1MX0.K5e_nO1kl0sOOK8rvjYTiRkHPk2vBoGcSGY0Xh3zVQg')
+    .then(response => this.datas = response.data)
+    .then(data => console.log(data))
+    .catch(error => console.log(error))
+    .then(() => console.log('Done'))
   }
 }
 </script>
