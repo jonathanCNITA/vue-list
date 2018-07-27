@@ -2,8 +2,8 @@
     <div>
         <h1>Update project</h1>
         <form action="" method="post">
-            Name : <input v-model="projectName" name="creatorName" type="text" value="projectName">
-            Description : <input v-model="projectDescription" name="creatorRole" type="text" value="projectDescription">
+            Name : <input v-model="updatedProject.name" name="creatorName" type="text" value="projectName">
+            Description : <input v-model="updatedProject.description" name="creatorRole" type="text" value="projectDescription">
             Picture : <input name="creatorPicture" type="text" value="projectPicture">
             <router-link :to="{name: 'ProjectList'}"><button @click="updateProject()">UPDATE</button></router-link>
         </form>
@@ -35,7 +35,7 @@ export default {
     },
     methods: {
         updateProject() {
-            axios.post('https://daily-standup-campus.herokuapp.com/api/projects/' + this.id, this.updatedProject,
+            axios.put('https://daily-standup-campus.herokuapp.com/api/projects/' + this.id, this.updatedProject,
             {
                 headers: {
                     Authorization:'Bearer ' + localStorage.getItem('UserTokenKey')

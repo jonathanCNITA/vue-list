@@ -39,9 +39,13 @@
                         Authorization:'Bearer ' + tokenKey
                     }
                 })
-                .then(response => console.log(response))
+                .then(response => {
+                    console.log(response);
+                    this.$emit('toto');
+                    })
                 .catch(error => console.log(error))
-                .then(() => console.log('Done'))
+                .then(() => console.log('Done')
+                )
             }
         }
     }
@@ -58,13 +62,5 @@
     height: 200px;
     max-height: 300px;
     overflow: hidden;
-}
-
-.red {
-    background-color: rgb(255, 0, 0, 0.2);
-}
-
-.green {
-    background-color: rgb(0, 255, 0, 0.2);
 }
 </style>

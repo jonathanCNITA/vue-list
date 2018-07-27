@@ -29,7 +29,7 @@ export default {
     methods: { 
         createProject() {
             let tokenKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViMjNmODIzYTM5YjlmMDAxNGViNGJlNiIsImlhdCI6MTUzMTE0Mjg1MX0.K5e_nO1kl0sOOK8rvjYTiRkHPk2vBoGcSGY0Xh3zVQg';
-            if (!publicProject) {
+            if (!this.publicProject) {
                 tokenKey = localStorage.getItem('UserTokenKey')
             }
             axios.post('https://daily-standup-campus.herokuapp.com/api/projects', this.newProjet, 
